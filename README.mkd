@@ -1,14 +1,14 @@
 Ansible Leiningen & JDK Role
 ============================
 
-This is a reusable ansible role which installs [Leiningen][] a recent version
-of open-jdk (which is also configured as default) on Debian and Ubuntu Systems.
+This is a reusable ansible role which installs [Leiningen][] and a
+recent version of open-jdk (which is also configured as default) on
+Debian and Ubuntu Systems.
 
-This role will configure Leinigen to be usable for _root_ if it is invoked via
-a login shell. 
+This role will configure Leinigen to be usable for root if it is
+invoked via a login shell.
 
 Note, Debian 8 is supported but Debian 7 is not.
-
 
 Supported Ansible Versions
 --------------------------
