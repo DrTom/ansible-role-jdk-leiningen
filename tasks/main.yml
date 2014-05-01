@@ -1,0 +1,25 @@
+- name: install jdk
+  apt: pkg={{item}} state=latest update_cache=yes cache_valid_time=3600
+  with_items: 
+    - openjdk-7-jre-headless 
+    - openjdk-7-jdk
+    - maven2
+    - visualvm
+  notify: set java7 as default
+
+  
+- name: download leiningen
+  get_url:  url=https://raw.github.com/technomancy/leiningen/{{leiningen_version}}/bin/lein 
+            dest=/usr/local/bin/lein-{{leiningen_version}}
+            mode=0755
+
+- name: link to main version of leinigen
+  file: dest=/usr/local/bin/lein
+        src=/usr/local/bin/lein-{{leiningen_version}}
+        state=link
+
+- name: root may execute leiningen 
+  lineinfile: line='export LEIN_ROOT=True'
+              state=present
+              dest=~root/.bashrc
+
