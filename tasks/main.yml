@@ -5,8 +5,11 @@
     - openjdk-7-jdk
     - maven2
     - visualvm
-  notify: set java7 as default
+  register: install_jdk
 
+- name: set java7 as default
+  command: update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+  when: install_jdk.changed
   
 - name: download leiningen
   get_url:  url=https://raw.github.com/technomancy/leiningen/{{leiningen_version}}/bin/lein 
