@@ -18,6 +18,7 @@ This role was tested with ansible => 1.5.
 Supported Operating Systems
 ---------------------------
 
+* Debian 7 Wheezy
 * Debian 8 Jessie
 * Ubuntu 14.04 LTS Trusty
 * Ubuntu 12.04 LTS Precise

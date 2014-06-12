@@ -4,8 +4,13 @@
     - openjdk-7-jre-headless 
     - openjdk-7-jdk
     - maven2
-    - visualvm
   register: install_jdk
+
+- name: install visualvm if available
+  apt: pkg={{item}} state=latest update_cache=yes cache_valid_time=3600
+  with_items:
+    - visualvm
+  when: (ansible_lsb.id == "Debian" and ansible_lsb.major_release|int >= 8) or ansible_lsb.id == "Ubuntu"
 
 - name: set java7 as default
   command: update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
